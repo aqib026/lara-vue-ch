@@ -2,7 +2,7 @@
     <div>
         <router-link class="btn btn-primary" :to="editUrl">edit</router-link>
         <router-link class="btn btn-primary" :to="viewUrl">view</router-link>
-        <DeleteBtn @deleted=""/>
+        <DeleteBtn :deleteUrl="deleteUrl"/>
     </div>
 </template>
 

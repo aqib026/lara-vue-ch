@@ -43086,7 +43086,7 @@ var render = function() {
         [_vm._v("view")]
       ),
       _vm._v(" "),
-      _c("DeleteBtn", { on: { deleted: function($event) {} } })
+      _c("DeleteBtn", { attrs: { deleteUrl: _vm.deleteUrl } })
     ],
     1
   )
