@@ -1,11 +1,12 @@
 <template>
-        <button class="btn btn-danger" @click="deleteRow">Delete</button>
+        <button class="btn btn-danger" @click="deleteRow" :ref="uniqueRef">Delete</button>
 </template>
 
 <script>
 export default {
     props: {
         deleteUrl:String,
+        row:Object
     },
     methods: {
         deleteRow() {
@@ -22,17 +23,24 @@ export default {
                 axios.delete(this.deleteUrl)
                     .then(() => {
                         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                        this.$emit('deleted');
+                        this.$router.go();
+
                     })
                     .catch(data => {
                         Swal.fire("Failed!", data.message, "warning");
                     });
                 }else{
-                    this.$emit('deleted');
+                    console.log(this.$refs.parent);
+                    //console.log(this.$refs);
 
                 }
             });
     }
+    },
+    computed:{
+        uniqueRef(){
+            return 'delRow_'+this.row.type + '_' + this.row.id;
+        },
     },
     created:function(){
 

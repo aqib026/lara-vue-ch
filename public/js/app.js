@@ -2249,7 +2249,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    deleteUrl: String
+    deleteUrl: String,
+    row: Object
   },
   methods: {
     deleteRow: function deleteRow() {
@@ -2268,14 +2269,19 @@ __webpack_require__.r(__webpack_exports__);
           axios["delete"](_this.deleteUrl).then(function () {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
 
-            _this.$emit('deleted');
+            _this.$router.go();
           })["catch"](function (data) {
             Swal.fire("Failed!", data.message, "warning");
           });
         } else {
-          _this.$emit('deleted');
+          console.log(_this.$refs.parent); //console.log(this.$refs);
         }
       });
+    }
+  },
+  computed: {
+    uniqueRef: function uniqueRef() {
+      return 'delRow_' + this.row.type + '_' + this.row.id;
     }
   },
   created: function created() {}
@@ -2562,9 +2568,7 @@ __webpack_require__.r(__webpack_exports__);
       return '/edit/' + this.row.type + "/" + this.row.id;
     }
   },
-  created: function created() {
-    console.log(this.props);
-  }
+  created: function created() {}
 });
 
 /***/ }),
@@ -42805,7 +42809,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "button",
-    { staticClass: "btn btn-danger", on: { click: _vm.deleteRow } },
+    {
+      ref: _vm.uniqueRef,
+      staticClass: "btn btn-danger",
+      on: { click: _vm.deleteRow }
+    },
     [_vm._v("Delete")]
   )
 }
@@ -42985,8 +42993,7 @@ var render = function() {
           data: _vm.rows,
           filter: _vm.filter,
           "per-page": _vm.perPage
-        },
-        on: { deleted: _vm.hello }
+        }
       }),
       _vm._v(" "),
       _c("bootstrap-4-datatable-pager", {
@@ -43086,7 +43093,7 @@ var render = function() {
         [_vm._v("view")]
       ),
       _vm._v(" "),
-      _c("DeleteBtn", { attrs: { deleteUrl: _vm.deleteUrl } })
+      _c("DeleteBtn", { attrs: { deleteUrl: _vm.deleteUrl, row: _vm.row } })
     ],
     1
   )

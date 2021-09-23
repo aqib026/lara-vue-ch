@@ -2,7 +2,7 @@
     <div>
         <router-link class="btn btn-primary" :to="editUrl">edit</router-link>
         <router-link class="btn btn-primary" :to="viewUrl">view</router-link>
-        <DeleteBtn :deleteUrl="deleteUrl"/>
+        <DeleteBtn :deleteUrl="deleteUrl" :row="row" />
     </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
     methods:{
     },
     computed:{
+        
         deleteUrl(){
             return '/'+this.row.type+"/"+this.row.id;
         },
@@ -32,7 +33,6 @@ export default {
         }
     },
     created: function () {
-        console.log(this.props);
     }
 }
 </script>
