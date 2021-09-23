@@ -1,8 +1,8 @@
 <template>
     <div>
-        <button class="btn btn-primary" @click>edit</button>
+        <router-link class="btn btn-primary" :to="editUrl">edit</router-link>
         <router-link class="btn btn-primary" :to="viewUrl">view</router-link>
-        <DeleteBtn :deleteUrl="deleteUrl" @deleted="deletedRow"/>
+        <DeleteBtn @deleted=""/>
     </div>
 </template>
 
@@ -26,6 +26,9 @@ export default {
         },
         viewUrl(){
             return '/detail/'+this.row.type+"/"+this.row.id;
+        },
+        editUrl(){
+            return '/edit/'+this.row.type+"/"+this.row.id;
         }
     },
     created: function () {

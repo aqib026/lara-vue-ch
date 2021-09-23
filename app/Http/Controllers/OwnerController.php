@@ -63,7 +63,7 @@ class OwnerController extends Controller
      */
     public function update(Request $request, Owner $owner): JsonResponse
     {
-        $owner->update($request->all());
+        $owner->where('id',$owner->id)->update($request->all());
 
         return response()->json($owner, 200);
     }

@@ -53,7 +53,7 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car): JsonResponse
     {
-        $car->update($request->all());
+        $car->where('id',$car->id)->update($request->all());
 
         return response()->json($car, 200);
     }

@@ -2,6 +2,7 @@ import Owners from './components/Owners.vue';
 import Addresses from './components/Addresses.vue';
 import Cars from './components/Cars.vue';
 import ViewDetail from './components/ViewDetail.vue';
+import EditDetail from './components/EditDetail.vue';
 
 export const routes = [
     {
@@ -23,6 +24,11 @@ export const routes = [
         name: 'detail',
         path: '/detail/:type/:id',
         component: ViewDetail
+    },
+    {
+        name: 'edit',
+        path: '/edit/:type/:id',
+        component: EditDetail
     }
 
 ];

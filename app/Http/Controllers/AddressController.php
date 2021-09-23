@@ -70,7 +70,7 @@ class AddressController extends Controller
      */
     public function update(Request $request, Address $address): JsonResponse
     {
-        $address->update($request->all());
+        $address->where('id',$address->id)->update($request->all());
 
         return response()->json($address, 200);
     }
