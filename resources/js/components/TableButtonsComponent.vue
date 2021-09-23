@@ -1,8 +1,8 @@
 <template>
     <div>
-        <button class="btn btn-primary" @click>View</button>
-        <button class="btn btn-primary" @click>Edit</button>
-        <DeleteBtn :deleteUrl="deleteUrl" :updateTable="this.$emit('updateTable')"/>
+        <button class="btn btn-primary" @click>edit</button>
+        <router-link class="btn btn-primary" :to="viewUrl">view</router-link>
+        <DeleteBtn :deleteUrl="deleteUrl" @deleted="deletedRow"/>
     </div>
 </template>
 
@@ -18,10 +18,15 @@ export default {
     components: {
         DeleteBtn,
     },
+    methods:{
+    },
     computed:{
         deleteUrl(){
             return '/'+this.row.type+"/"+this.row.id;
         },
+        viewUrl(){
+            return '/detail/'+this.row.type+"/"+this.row.id;
+        }
     },
     created: function () {
         console.log(this.props);

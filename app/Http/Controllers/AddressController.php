@@ -21,6 +21,23 @@ class AddressController extends Controller
     }
 
     /**
+     * Return a Avg of Cars per Address.
+     *
+     * @return array
+     */
+
+    public function avgInfo(): array
+    {
+        $avgCars = \DB::table('addresses')
+                    ->select(\DB::raw('round(COUNT(DISTINCT cars.id)/COUNT(DISTINCT addresses.id)) as avg'))
+                    ->leftjoin('cars', 'addresses.id', '=', 'cars.address_id')
+                    ->first();
+
+                    return (array)$avgCars;                
+    }
+
+
+    /**
      * Return a single address.
      *
      * @param Address $address

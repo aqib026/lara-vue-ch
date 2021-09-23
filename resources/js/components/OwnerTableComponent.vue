@@ -1,6 +1,6 @@
 <template>
     <div>
-        <bootstrap-4-datatable :columns="columns" :data="rows" :filter="filter" :per-page="perPage" class="table-bordered">
+        <bootstrap-4-datatable :columns="columns" :data="rows" @deleted="hello" :filter="filter" :per-page="perPage" class="table-bordered">
             
         </bootstrap-4-datatable>
         <bootstrap-4-datatable-pager v-model="page" type="abbreviated"></bootstrap-4-datatable-pager>
@@ -62,7 +62,7 @@ export default {
             axios.get('/owner').then(function (res) {
                 this.rows = res.data.map(o => ({...o, 'type': 'owner'}));
             }.bind(this));
-        }
+        },
     },
     created: function () {
         this.showOwners()

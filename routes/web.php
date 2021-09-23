@@ -30,6 +30,8 @@ Route::post('address', 'AddressController@store');
 Route::put('address/{address}', 'AddressController@update');
 Route::delete('address/{address}', 'AddressController@delete');
 
+Route::get('address-info', 'AddressController@avgInfo');
+
 Route::get('car', 'CarController@index');
 Route::get('car/{car}', 'CarController@show');
 Route::post('car', 'CarController@store');

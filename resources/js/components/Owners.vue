@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <OwnerInfo />
                 <div class="card">
                     <div class="card-header">Owners</div>
 
@@ -15,5 +16,11 @@
 </template>
 
 <script>
-export default {}
+import OwnerInfo from "./OwnerInfo";
+
+export default {
+    components:{
+        OwnerInfo,
+    }
+}
 </script>

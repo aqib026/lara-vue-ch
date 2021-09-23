@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                <AddressInfo />
                 <div class="card">
                     <div class="card-header">Addresses</div>
 
@@ -15,5 +16,10 @@
 </template>
 
 <script>
-export default {}
+import AddressInfo from "./AddressInfo";
+export default {
+    components:{
+        AddressInfo,
+    }    
+}
 </script>

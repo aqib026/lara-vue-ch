@@ -19,12 +19,15 @@ class OwnerController extends Controller
         return Owner::withCount('addresses','cars')->get()->toArray();
     }
 
-    public function avgInfo()
+    public function avgInfo(): array
     {
         $avgCars = \DB::table('owners')
-                        ->select(\DB::raw('round( (SELECT count(id) FROM cars) / (SELECT count(id) FROM owners)) as avg , round( (SELECT count(id) FROM addresses) / (SELECT count(id) FROM owners)) as aDavg'))
-                        ->first();
-        echo "<pre>"; print_r($avgCars);                
+                    ->select(\DB::raw('round(COUNT(DISTINCT cars.id)/COUNT(DISTINCT owners.id)) as avg,round(COUNT(DISTINCT addresses.id)/COUNT(DISTINCT owners.id)) as aDavg'))
+                    ->leftjoin('cars', 'owners.id', '=', 'cars.owner_id')
+                    ->leftjoin('addresses', 'owners.id', '=', 'addresses.owner_id')
+                    ->first();
+
+                    return (array)$avgCars;                
     }
 
     /**

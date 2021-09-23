@@ -22,11 +22,14 @@ export default {
                 axios.delete(this.deleteUrl)
                     .then(() => {
                         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                        this.$emit('updateTable');
+                        this.$emit('deleted');
                     })
                     .catch(data => {
                         Swal.fire("Failed!", data.message, "warning");
                     });
+                }else{
+                    this.$emit('deleted');
+
                 }
             });
     }
