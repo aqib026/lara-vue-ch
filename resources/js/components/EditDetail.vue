@@ -48,9 +48,9 @@ export default {
         submit(){
             axios.put('/'+this.$route.params.type+'/'+this.$route.params.id,this.Info).then(function (res) {
                 if(this.$route.params.type == 'address')
-                    this.$router.push('/'+this.$route.params.type);
+                    this.$router.push('/addresses');
                 else    
-                    this.$router.push('/'+this.$route.params.type);
+                    this.$router.push('/'+this.$route.params.type+'s');
             }.bind(this));
         }
     },

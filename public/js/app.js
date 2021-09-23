@@ -2340,7 +2340,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     submit: function submit() {
       axios.put('/' + this.$route.params.type + '/' + this.$route.params.id, this.Info).then(function (res) {
-        if (this.$route.params.type == 'address') this.$router.push('/' + this.$route.params.type);else this.$router.push('/' + this.$route.params.type);
+        if (this.$route.params.type == 'address') this.$router.push('/addresses');else this.$router.push('/' + this.$route.params.type + 's');
       }.bind(this));
     }
   },
