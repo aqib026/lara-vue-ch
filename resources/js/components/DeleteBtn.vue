@@ -23,16 +23,16 @@ export default {
                 axios.delete(this.deleteUrl)
                     .then(() => {
                         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-                        this.$router.go();
+                        let key = Object.keys(this.$refs)[0];
+                        this.$refs[key].parentNode.parentNode.parentNode.remove();
 
                     })
                     .catch(data => {
                         Swal.fire("Failed!", data.message, "warning");
                     });
                 }else{
-                    console.log(this.$refs.parent);
-                    //console.log(this.$refs);
-
+                    console.log(this.$refs);
+                    
                 }
             });
     }

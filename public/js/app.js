@@ -2268,13 +2268,14 @@ __webpack_require__.r(__webpack_exports__);
         if (result.value) {
           axios["delete"](_this.deleteUrl).then(function () {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            var key = Object.keys(_this.$refs)[0];
 
-            _this.$router.go();
+            _this.$refs[key].parentNode.parentNode.parentNode.remove();
           })["catch"](function (data) {
             Swal.fire("Failed!", data.message, "warning");
           });
         } else {
-          console.log(_this.$refs.parent); //console.log(this.$refs);
+          console.log(_this.$refs);
         }
       });
     }
